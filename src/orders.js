@@ -172,14 +172,13 @@ class Orders {
    *
    * @param {*} accountId The account to make the transaction from
    * @param {*} ticker The security symbol
-   * @param {*} limit The price of securities to purchase
+   * @param {*} marketValue The price of securities to purchase
    */
-  async fractionalBuy(accountId, ticker, limit) {
+  async fractionalBuy(accountId, ticker, marketValue) {
     const details = await this.data.getSecurity(ticker, true);
     return this.worker.handleRequest(endpoints.PLACE_ORDER, {
       security_id: (await this.data.getSecurity(ticker)).id,
-      market_value: !(new Ticker(ticker).crypto) ? details.quote.amount : undefined,
-      limit_price: limit,
+      market_value: marketValue,
       order_type: 'buy_value',
       order_sub_type: 'fractional',
       time_in_force: 'day',

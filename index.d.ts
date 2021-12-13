@@ -282,9 +282,9 @@ export namespace orders {
    *
    * @param {*} accountId The account to make the transaction from
    * @param {*} ticker The security symbol
-   * @param {*} limit The price to purchase the security at
+   * @param {*} marketValue The price to purchase the security at
    */
-   function fractionalBuy(accountId: string, ticker: Ticker, limit: number, quantity: number): Promise<any>;
+   function fractionalBuy(accountId: string, ticker: Ticker, marketValue: number): Promise<any>;
 
   /**
    * Purchase a security with a limit order.
