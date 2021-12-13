@@ -167,6 +167,24 @@ class Orders {
     });
   }
 
+   /**
+   * Fractional buy a security through the Wealthsimple Trade application.
+   *
+   * @param {*} accountId The account to make the transaction from
+   * @param {*} ticker The security symbol
+   * @param {*} quantity The number of securities to purchase
+   */
+  async fractionalBuy(accountId, ticker, limit) {
+    return this.worker.handleRequest(endpoints.PLACE_ORDER, {
+      security_id: (await this.data.getSecurity(ticker)).id,
+      limit_price: limit,
+      order_type: 'buy_value',
+      order_sub_type: 'fractional',
+      time_in_force: 'day',
+      account_id: accountId,
+    });
+  }
+  
   /**
    * Limit buy a security through the Wealthsimple Trade application.
    *
