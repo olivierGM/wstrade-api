@@ -24,9 +24,11 @@ API Reference
 * ### [orders.`cancel`](#orders-cancel)
 * ### [orders.`cancelPending`](#orders-cancelPending)
 * ### [orders.`marketBuy`](#orders-marketBuy)
+* ### [orders.`fractionalBuy`](#orders-fractionalBuy)
 * ### [orders.`limitBuy`](#orders-limitBuy)
 * ### [orders.`stopLimitBuy`](#orders-stopLimitBuy)
 * ### [orders.`marketSell`](#orders-marketSell)
+* ### [orders.`fractionalSell`](#orders-fractionalSell)
 * ### [orders.`limitSell`](#orders-limitSell)
 * ### [orders.`stopLimitSell`](#orders-stopLimitSell)
 ---
@@ -325,6 +327,37 @@ See also: [accounts.`all`](/docs/accounts/README.md#accounts-all)
 
 ---
 
+<a id="orders-fractionalBuy"></a>
+### orders.`fractionalBuy`
+
+Purchase a security with a fractional order.
+
+* `accountId` must be one returned by accounts.`all`
+* `ticker` is an identifier for a security. Read [this document](/docs/ticker.md) to learn how to construct a valid ticker.
+* `value` is the market value of the order
+
+[View examples](/docs/orders/examples.js)
+
+```javascript
+orders.fractionalBuy(accountId, ticker, value) -> Promise<any>
+```
+```javascript
+* This is not the full returned object - it has been cut.
+{
+  // Confirmation and details of the fractional buy
+  object: 'order',
+  created_at: '1970-01-01T13:42:52.422Z',
+  completed_at: null,
+  user_id: 00000,
+  account_id: 'tfsa-zzzzzzz',
+  ...
+}
+```
+
+See also: [accounts.`all`](/docs/accounts/README.md#accounts-all)
+
+---
+
 <a id="orders-limitBuy"></a>
 ### orders.`limitBuy`
 
@@ -408,6 +441,37 @@ orders.marketSell(accountId, ticker, quantity) -> Promise<any>
 * This is not the full returned object - it has been cut.
 {
   // Confirmation and details of the market sell
+  object: 'order',
+  created_at: '1970-01-01T13:42:52.422Z',
+  completed_at: null,
+  user_id: 00000,
+  account_id: 'tfsa-zzzzzzz',
+  ...
+}
+```
+
+See also: [accounts.`all`](/docs/accounts/README.md#accounts-all)
+
+---
+
+<a id="orders-fractionalSell"></a>
+### orders.`fractionalSell`
+
+Purchase a security with a fractional order.
+
+* `accountId` must be one returned by accounts.`all`
+* `ticker` is an identifier for a security. Read [this document](/docs/ticker.md) to learn how to construct a valid ticker.
+* `value` is the market value of the order
+
+[View examples](/docs/orders/examples.js)
+
+```javascript
+orders.fractionalSell(accountId, ticker, value) -> Promise<any>
+```
+```javascript
+* This is not the full returned object - it has been cut.
+{
+  // Confirmation and details of the fractional sell
   object: 'order',
   created_at: '1970-01-01T13:42:52.422Z',
   completed_at: null,

@@ -47,6 +47,9 @@ import { auth, orders, accounts, quotes } from 'wstrade-api';
     // Place a market buy for 6 shares of AAPL (Apple) in Jane's personal account.
     let marketBuyAapl = await orders.marketBuy(accs.personal, 'AAPL:NASDAQ', 6);
 
+    // Place a fractional buy for 50 dollars of TD (Toronto Dominion Bank) in Jane's RRSP account.
+    let fracBuyTD = await orders.fractionalBuy(accs.rrsp, 'TD:TSX', 50.00);
+
     // Place a limit buy for 10 shares of Uber in Jane's TFSA
     // Since we know Wealthsimple Trade's quotes are 15 minutes delayed, Jane is fine
     // with paying up to $1/share more from Wealthsimple Trade's delayed quotes.
@@ -68,6 +71,9 @@ import { auth, orders, accounts, quotes } from 'wstrade-api';
 
     // Place a market sell for 5 shares of SU (Suncor) in Jane's TFSA
     let marketSellSu = await orders.marketSell(accs.tfsa, 'SU:TSX', 5);
+
+    // Place a fractional sell for 75 dollars of SHOP (Shopify) in Jane's RRSP account.
+    let fracSellShop = await orders.fractionalSell(accs.rrsp, 'SHOP:TSX', 75.00);
 
     // Place a limit sell for 10 shares of Netflix in Jane's TFSA
     // Since we know Wealthsimple Trade's quotes are 15 minutes delayed, Jane is fine
