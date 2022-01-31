@@ -168,6 +168,29 @@ class Orders {
   }
 
   /**
+   * Fractional buy a security through the Wealthsimple Trade application.
+   *
+   * @param {*} accountId The account to make the transaction from
+   * @param {*} ticker The security symbol
+   * @param {*} value The market value of the order
+   */
+  async fractionalBuy(accountId, ticker, value) {
+    const details = await this.data.getSecurity(ticker, true);
+    const quantity = Math.round((value / details.quote.amount) * 10000) / 10000;
+
+    return this.worker.handleRequest(endpoints.PLACE_ORDER, {
+      security_id: details.id,
+      limit_price: details.quote.amount,
+      market_value: value,
+      quantity,
+      order_type: 'buy_value',
+      order_sub_type: 'fractional',
+      time_in_force: 'day',
+      account_id: accountId,
+    });
+  }
+
+  /**
    * Limit buy a security through the Wealthsimple Trade application.
    *
    * @param {*} accountId The account to make the transaction from
@@ -232,6 +255,29 @@ class Orders {
       quantity,
       order_type: 'sell_quantity',
       order_sub_type: 'market',
+      time_in_force: 'day',
+      account_id: accountId,
+    });
+  }
+
+  /**
+   * Fractional sell a security through the Wealthsimple Trade application.
+   *
+   * @param {*} accountId The account to make the transaction from
+   * @param {*} ticker The security symbol
+   * @param {*} value The market value of the order
+   */
+  async fractionalSell(accountId, ticker, value) {
+    const details = await this.data.getSecurity(ticker, true);
+    const quantity = Math.round((value / details.quote.amount) * 10000) / 10000;
+
+    return this.worker.handleRequest(endpoints.PLACE_ORDER, {
+      security_id: details.id,
+      limit_price: details.quote.amount,
+      market_value: value,
+      quantity,
+      order_type: 'sell_value',
+      order_sub_type: 'fractional',
       time_in_force: 'day',
       account_id: accountId,
     });
