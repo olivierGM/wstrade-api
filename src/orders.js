@@ -175,7 +175,7 @@ class Orders {
    * @param {*} marketValue The price of securities to purchase
    */
   async fractionalBuy(accountId, ticker, marketValue) {
-    const details = await this.data.getSecurity(ticker, true);
+    // const details = await this.data.getSecurity(ticker, true);
     return this.worker.handleRequest(endpoints.PLACE_ORDER, {
       security_id: (await this.data.getSecurity(ticker)).id,
       market_value: marketValue,

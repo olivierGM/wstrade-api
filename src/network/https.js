@@ -192,6 +192,7 @@ class HttpsWorker {
       });
     } catch (error) {
       // we might have failed because OTP was not provided
+      console.log('login error:', error);
       if (!this.events.otp) {
         throw new Error('OTP not provided!');
       }
