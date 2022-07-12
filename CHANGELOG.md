@@ -1,5 +1,9 @@
 v1.10.3
 ==
+*  `account.list()` will return only open accounts
+
+v1.10.3
+==
 * Add `fractionalBuy` as a type of Order
 
 v1.10.2
