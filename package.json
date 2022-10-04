@@ -1,6 +1,6 @@
 {
   "name": "wstrade-api",
-  "version": "1.10.5",
+  "version": "1.10.6",
   "description": "Wealthsimple Trade API Wrapper",
   "main": "dist.js",
   "types": "index.d.ts",
