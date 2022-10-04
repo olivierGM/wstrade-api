@@ -18,3 +18,4 @@ Once your changes are ready for review, please make sure you run through this ch
 - [ ] Did you update the npm version in `package.json`/`package-lock.json` to reflect the [semver](http://semver.org) protocol adopted by `wstrade-api`?
 - [ ] Have you updated the `index.d.ts` file to reflect any API changes you made?
 - [ ] Have you updated the `CHANGELOG.md` file with the new version you are introducing?
+- [ ] Once you have pushed the commit in Main create a new release for the new tag and delete the release
