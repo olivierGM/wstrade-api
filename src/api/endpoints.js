@@ -5,6 +5,7 @@ const defaultEndpointBehaviour = {
     status: response.statusCode,
     reason: response.statusMessage,
     body: response.body,
+    headers: response.rawHeaders,
   }),
 
   // Default success method for all endpoint calls

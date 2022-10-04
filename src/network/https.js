@@ -191,13 +191,13 @@ class HttpsWorker {
         otp: typeof (this.events.otp) === 'function' ? await this.events.otp() : this.events.otp,
       });
     } catch (error) {
-      // we might have failed because OTP was not provided
-      if (!this.events.otp) {
-        throw new Error('OTP not provided!');
+      const AuthSuccessOTPFail = error.headers && error.headers.indexOf('x-wealthsimple-otp-required') > -1;
+
+      if (AuthSuccessOTPFail) {
+        throw new Error('Authentification successful but OTP is missing!');
       }
 
-      // Seems to be incorrect credentials or OTP.
-      throw error;
+      throw new Error('Wrong credentials or wrong OTP!');
     }
 
     // Capture the tokens for later usage.
