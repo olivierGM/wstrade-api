@@ -64,7 +64,7 @@ const WealthsimpleTradeEndpoints = {
       const data = response.body;
 
       // Collect all account ids registered under this Wealthsimple Trade Account
-      return data.results.filter((account) => account.status === 'open').map((account) => account.id);
+      return data.results.filter((account) => account.status === 'open' && !account.deleted_at).map((account) => account.id);
     },
     onFailure: defaultEndpointBehaviour.onFailure,
   },

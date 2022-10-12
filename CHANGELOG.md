@@ -1,5 +1,9 @@
 v1.10.6
 ==
+*  `account.list()` will not return deleted accounts
+
+v1.10.5
+==
 *  `auth.login()` will now distinguish a successful authentication with no otp from simply a wrong credentials or wrong otp
 
 v1.10.4
